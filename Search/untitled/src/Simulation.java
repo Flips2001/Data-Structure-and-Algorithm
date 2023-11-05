@@ -35,18 +35,11 @@ public class Simulation {
         executor.shutdown();
     }
 
-    public static void simulateRandomSorters(int n, Sorter[] sorters) {
-        for (Sorter sorter : sorters) {
-            simulateSort(generateRandomNumbers(n), sorter);
-        }
-    }
-
-    public static void simulateDescendingSorters(int n, Sorter[] sorters) {
-        for (Sorter sorter : sorters) {
-            simulateSort(Arrays.stream(generateRandomNumbers(n)).sorted().toArray(), sorter);
-        }
-    }
-
+    /**
+     * Generate an array of random numbers
+     * @param n int
+     * @return int[]
+     */
     public static int[] generateRandomNumbers(int n) {
         int[] numbers = new int[n];
         Random rnd = new Random();
@@ -56,6 +49,9 @@ public class Simulation {
         return numbers;
     }
 
+    /*+
+     * Simulate a sort algorithm by running it 1000 times and calculating the average number of steps
+     */
     public static String simulateSort(int[] array, Sorter sorter) {
         long totalSteps = 0;
         int simulations = 1000;
